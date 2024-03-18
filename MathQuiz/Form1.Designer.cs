@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.timeLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.plusLeftLabel = new System.Windows.Forms.Label();
@@ -51,6 +52,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.dividedLeftLabel = new System.Windows.Forms.Label();
             this.startButton = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.sum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.difference)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.product)).BeginInit();
@@ -59,12 +61,14 @@
             // 
             // timeLabel
             // 
+            this.timeLabel.BackColor = System.Drawing.SystemColors.ControlDark;
             this.timeLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.timeLabel.Font = new System.Drawing.Font("굴림", 15.75F);
             this.timeLabel.Location = new System.Drawing.Point(270, 9);
             this.timeLabel.Name = "timeLabel";
             this.timeLabel.Size = new System.Drawing.Size(200, 30);
             this.timeLabel.TabIndex = 0;
+            this.timeLabel.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.timeLabel.Click += new System.EventHandler(this.timeLabel_Click);
             // 
             // label1
@@ -75,7 +79,8 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(129, 27);
             this.label1.TabIndex = 1;
-            this.label1.Text = "TIme Left";
+            this.label1.Text = "Time Left";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // plusLeftLabel
             // 
@@ -91,7 +96,7 @@
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("굴림", 18F);
-            this.label2.Location = new System.Drawing.Point(265, 75);
+            this.label2.Location = new System.Drawing.Point(256, 75);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(60, 50);
             this.label2.TabIndex = 3;
@@ -101,7 +106,7 @@
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("굴림", 18F);
-            this.label3.Location = new System.Drawing.Point(135, 75);
+            this.label3.Location = new System.Drawing.Point(126, 75);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(60, 50);
             this.label3.TabIndex = 4;
@@ -127,6 +132,7 @@
             this.sum.Size = new System.Drawing.Size(100, 42);
             this.sum.TabIndex = 1;
             this.sum.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            this.sum.Enter += new System.EventHandler(this.answer_Enter);
             // 
             // difference
             // 
@@ -135,6 +141,7 @@
             this.difference.Name = "difference";
             this.difference.Size = new System.Drawing.Size(100, 42);
             this.difference.TabIndex = 2;
+            this.difference.Enter += new System.EventHandler(this.answer_Enter);
             // 
             // minusRightLabel
             // 
@@ -149,7 +156,7 @@
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("굴림", 18F);
-            this.label5.Location = new System.Drawing.Point(135, 123);
+            this.label5.Location = new System.Drawing.Point(126, 123);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(60, 50);
             this.label5.TabIndex = 9;
@@ -159,7 +166,7 @@
             // label6
             // 
             this.label6.Font = new System.Drawing.Font("굴림", 18F);
-            this.label6.Location = new System.Drawing.Point(265, 123);
+            this.label6.Location = new System.Drawing.Point(256, 123);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(60, 50);
             this.label6.TabIndex = 8;
@@ -184,6 +191,7 @@
             this.product.Name = "product";
             this.product.Size = new System.Drawing.Size(100, 42);
             this.product.TabIndex = 3;
+            this.product.Enter += new System.EventHandler(this.answer_Enter);
             // 
             // timesRightLabel
             // 
@@ -198,7 +206,7 @@
             // label9
             // 
             this.label9.Font = new System.Drawing.Font("굴림", 18F);
-            this.label9.Location = new System.Drawing.Point(135, 171);
+            this.label9.Location = new System.Drawing.Point(126, 171);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(60, 50);
             this.label9.TabIndex = 14;
@@ -208,7 +216,7 @@
             // label10
             // 
             this.label10.Font = new System.Drawing.Font("굴림", 18F);
-            this.label10.Location = new System.Drawing.Point(265, 171);
+            this.label10.Location = new System.Drawing.Point(256, 171);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(60, 50);
             this.label10.TabIndex = 13;
@@ -232,6 +240,7 @@
             this.quotient.Name = "quotient";
             this.quotient.Size = new System.Drawing.Size(100, 42);
             this.quotient.TabIndex = 4;
+            this.quotient.Enter += new System.EventHandler(this.answer_Enter);
             // 
             // dividedRightLabel
             // 
@@ -246,7 +255,7 @@
             // label13
             // 
             this.label13.Font = new System.Drawing.Font("굴림", 18F);
-            this.label13.Location = new System.Drawing.Point(135, 219);
+            this.label13.Location = new System.Drawing.Point(126, 219);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(60, 50);
             this.label13.TabIndex = 19;
@@ -256,7 +265,7 @@
             // label14
             // 
             this.label14.Font = new System.Drawing.Font("굴림", 18F);
-            this.label14.Location = new System.Drawing.Point(265, 219);
+            this.label14.Location = new System.Drawing.Point(256, 219);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(60, 50);
             this.label14.TabIndex = 18;
@@ -285,11 +294,16 @@
             this.startButton.UseVisualStyleBackColor = true;
             this.startButton.Click += new System.EventHandler(this.startButton_Click);
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(482, 353);
+            this.ClientSize = new System.Drawing.Size(478, 349);
             this.Controls.Add(this.startButton);
             this.Controls.Add(this.quotient);
             this.Controls.Add(this.dividedRightLabel);
@@ -352,6 +366,7 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label dividedLeftLabel;
         private System.Windows.Forms.Button startButton;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
